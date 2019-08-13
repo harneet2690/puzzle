@@ -31,21 +31,20 @@ import  {Motion, spring} from "react-motion"
     }
 
   class Tile extends Component {      
-    handleClick () {
-      const {index} = this.props
-      console.log("this.props", this.props)
-      this.props.onClick(index)
-    }
+    // handleClick () {      
+    //   const {index} = this.props
+    //   this.props.onClick(index)
+    // }
     
     render () {
       const {hole, number, index, rows, cols, width, height} = this.props
       const matrixPos = getMatrixPosition(index, rows, cols)
       const visualPos = getVisualPosition(matrixPos, width, height)
-    //   console.log("visualPos >>>", visualPos)
       const motionStyle = {
         translateX: spring(visualPos.x),
         translateY: spring(visualPos.y)
       }
+      // console.log("motionStyle", motionStyle)
       const style = {
         ...tileStyle,
         ...(number === hole ? holeStyle : ""),
@@ -54,13 +53,13 @@ import  {Motion, spring} from "react-motion"
       }
       
       return (
+        
         <Motion style={motionStyle}>
           {({translateX, translateY}) => (
             <li style={{...style, transform: `translate3d(${translateX}px, ${translateY}px, 0)`}}
-              onClick={() => this.handleClick()}
-              >
+              onClick={() => this.props.handleClick(this.props.index)}>
               {number}
-            </li>
+             </li>
           )}
         </Motion>
       )
