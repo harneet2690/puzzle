@@ -50,7 +50,6 @@ import Tile from "./Tile"
   
         render () {        
             const {rows, cols, width, height} = this.props
-            // const {numbers} = this.state
             const tileWidth = Math.round(width / cols)
             const tileHeight = Math.round(height / rows)
             const style = {
