@@ -48,11 +48,10 @@ import Tile from "./Tile"
             }
         }
   
-        render () {
+        render () {        
             const {rows, cols, width, height} = this.props
-            const {numbers} = this.state
-            const pieceWidth = Math.round(width / cols)
-            const pieceHeight = Math.round(height / rows)
+            const tileWidth = Math.round(width / cols)
+            const tileHeight = Math.round(height / rows)
             const style = {
             ...tilesStyle,
             width,
@@ -62,10 +61,10 @@ import Tile from "./Tile"
         return (
             <div>
                 <ul style={style}>
-                {numbers.map((number, index) => (
+                {this.state.numbers.map((number, index) => (
                     <Tile {...this.props} index={index} number={number} key={number}
-                    width={pieceWidth} height={pieceHeight}
-                    onClick={(e) => this.handleTileClick(e)}
+                    width={tileWidth} height={tileHeight}
+                    handleClick={(e) => this.handleTileClick(e)}
                     />
                 ))}
                 </ul>
